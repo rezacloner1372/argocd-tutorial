@@ -15,16 +15,16 @@ spec:
           - name: message
             value: "MESSAGE FROM ARGOCD: The last sync is:  *** Sync OK ***"
           - name: url
-            value: "mattermost.local"
+            value: "kind-mattermost.com"
           - name: token
-            value: "1mh8r35js7dhpcswb4mpnkwpcw"
+            value: "ntxgwr6hf386jj3ihc4tjf7ego"
           - name: scheme
             value: "http"
           - name: port
-            value: "8065"
+            value: "80 "
           - name: channel_name
-            value: "argocd-course"
+            value: "Argocd"
           - name: team_name
-            value: "DevOps-Hobbies"
+            value: "Argocd"
       restartPolicy: Never
   backoffLimit: 0
