@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio
+  namespace: argocd
+spec:
+  destination:
+    namespace: minio
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: minio
+    repoURL: https://charts.min.io/
+    targetRevision: 5.4.0
+    helm:
+      values: |
+        # Customize these values according to your needs
+        mode: standalone  # or 'distributed' for production
+        rootUser: minioadmin
+        rootPassword: minioadmin
+        persistence:
+          enabled: true
+          size: 2Gi
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 500m
+        service:
+          type: ClusterIP
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
